@@ -28,6 +28,8 @@ spec:
   params:
     - name: buildnumber
       description: the pipeline pvc name
+    - name: text
+      value: $(params.text)
   tasks:
     - name: sample-out-task
       taskRef:
@@ -56,7 +58,7 @@ spec:
         - name: buildnumber
           value: $(params.buildnumber)
         - name: text
-          value: $(params.text)
+          value: $(params.TEXT)
 ---
 apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding

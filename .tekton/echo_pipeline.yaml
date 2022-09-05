@@ -6,7 +6,9 @@ spec:
   inputs:
     params:
       - name: buildnumber
-        description: test       
+        description: test  
+      - name: text
+        description: test
   steps:
     - name: task-two-step-four
       image: ubuntu
@@ -40,6 +42,8 @@ spec:
     - name: buildnumber
       description: thebuildnuminput
       default: buildnumberfailedjerh
+    - name: text
+      value: $(params.text)
   resourcetemplates:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun

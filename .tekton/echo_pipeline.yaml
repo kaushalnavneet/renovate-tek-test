@@ -6,9 +6,9 @@ spec:
   inputs:
     params:
       - name: buildnumber
-        description: test  
-      - name: text
         description: test
+  params:
+    - name: text
   steps:
     - name: task-two-step-four
       image: ubuntu
@@ -29,11 +29,13 @@ spec:
     - name: buildnumber
       description: the pipeline pvc name
     - name: text
-      value: $(params.text)
   tasks:
     - name: sample-out-task
       taskRef:
         name: sample-out-task
+      params:
+        - name: text
+          value: $(params.text)
 ---
 apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
@@ -44,8 +46,6 @@ spec:
     - name: buildnumber
       description: thebuildnuminput
       default: buildnumberfailedjerh
-    - name: text
-      value: $(params.text)
   resourcetemplates:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
@@ -58,7 +58,7 @@ spec:
         - name: buildnumber
           value: $(params.buildnumber)
         - name: text
-          value: $(params.TEXT)
+          value: $(params.text)
 ---
 apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
@@ -70,6 +70,8 @@ spec:
       value: "https://github.com/open-toolchain/hello-tekton"
     - name: revision
       value: "master"
+    - name: text
+      value: $(params.TEXT)
 ---
 apiVersion: tekton.dev/v1beta1
 kind: EventListener

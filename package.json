@@ -2,6 +2,12 @@
   "name": "greenwell-tekton",
   "private": true,
   "version": "0.0.1",
-  "description": "Basic tekton pipeline for greenwell",
-  "author": "Brian Gleeson"
+  "description": "Basic tekton pipeline",
+  "author": "Navneet",
+  "dependencies": {
+    "commander": "2.20.3",
+    "lodash": "4.17.20",
+    "@date-io/date-fns": "2.10.0",
+    "@date-io/moment": "2.10.0"
+  }
 }
